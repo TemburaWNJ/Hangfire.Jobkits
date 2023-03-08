@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Hangfire.JobKits.Worker
 {
-    internal class StandbyMap
+    public class StandbyMap
     {
         public Dictionary<string, int> JobCategories { get; }
         public Dictionary<string, StandbyJob> JobCollection { get; }

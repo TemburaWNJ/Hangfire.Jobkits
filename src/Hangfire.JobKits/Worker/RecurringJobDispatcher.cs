@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Hangfire.Common;
 using Hangfire.Dashboard;
+using Hangfire.States;
 
 namespace Hangfire.JobKits.Worker
 {
@@ -38,10 +39,24 @@ namespace Hangfire.JobKits.Worker
                 var timeZone = Options.RecurringTimeZone ?? TimeZoneInfo.Local;
 
                 var parameters = await StandbyHelper.CreateParameters(context, standbyJob.Method);
-                
-                context.GetRecurringJobManager().AddOrUpdate(standbyJob.RecurringJobId, new Job(standbyJob.Method, parameters), cron, timeZone);
-                context.Response.StatusCode = 200;
+                var queueString = string.Empty;
 
+                if (standbyJob.UseQueue)
+                {
+                    queueString = (await context.Request.GetFormValuesAsync("enqueued_state")).LastOrDefault();
+                }
+
+                if (!string.IsNullOrEmpty(queueString))
+                {
+                    context.GetRecurringJobManager()
+                        .AddOrUpdate(standbyJob.RecurringJobId, new Job(standbyJob.Method, parameters), cron, timeZone, queueString);
+                }
+                else
+                {
+                    context.GetRecurringJobManager().AddOrUpdate(standbyJob.RecurringJobId, new Job(standbyJob.Method, parameters), cron, timeZone);
+                }
+
+                context.Response.StatusCode = 200;
             }
             catch (Exception e)
             {

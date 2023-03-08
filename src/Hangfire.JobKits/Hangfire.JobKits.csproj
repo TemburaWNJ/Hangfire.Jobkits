@@ -12,12 +12,12 @@
     <RazorViewsCodeGenDirectory>$(MsBuildProjectDirectory)\</RazorViewsCodeGenDirectory>
     <Copyright>MIT</Copyright>
     <Authors>Crab Lin</Authors>
-    <Description>Add Monitor page and Singleton job.</Description>
-    <Version>2.0.0</Version>
+    <Description>調整 RecurringJob 使用 Queue </Description>
+    <Version>2.0.1</Version>
     <PackageProjectUrl>https://github.com/crablin/Hangfire.Jobkits</PackageProjectUrl>
     <RepositoryUrl>https://github.com/crablin/Hangfire.Jobkits</RepositoryUrl>
-    <AssemblyVersion>2.0.0</AssemblyVersion>
-    <FileVersion>2.0.0</FileVersion>
+    <AssemblyVersion>2.0.1</AssemblyVersion>
+    <FileVersion>2.0.1</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='net461'">

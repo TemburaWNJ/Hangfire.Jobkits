@@ -3,7 +3,7 @@ using Hangfire.JobKits.Worker;
 
 namespace Hangfire.JobKits.Dashboard
 {
-    internal partial class MonitorPage
+    public partial class MonitorPage
     {
         /// <summary>
         /// Selected category.

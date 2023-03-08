@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Hangfire.JobKits.Worker
 {
-    internal sealed class StandbyJob
+    public sealed class StandbyJob
     {
         public string Id { get; }
         public string CategoryName { get; }

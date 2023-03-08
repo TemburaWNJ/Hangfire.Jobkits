@@ -4,7 +4,7 @@ using Hangfire.JobKits.Resources;
 
 namespace Hangfire.JobKits.Worker
 {
-    internal class MonitorMap
+    public class MonitorMap
     {
         public Dictionary<string, int> JobCategories { get; }
         public Dictionary<string, List<MonitorJob>> JobCollection { get; }

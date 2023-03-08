@@ -2,7 +2,7 @@
 
 namespace Hangfire.JobKits.Dashboard
 {
-    internal partial class StandbyPage
+    public partial class StandbyPage
     {
         /// <summary>
         /// Selected category.

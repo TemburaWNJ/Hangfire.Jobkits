@@ -52,7 +52,7 @@ namespace Hangfire.JobKits.Dashboard
     #line hidden
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
-    internal partial class MonitorPage : Hangfire.Dashboard.RazorPage
+    public partial class MonitorPage : Hangfire.Dashboard.RazorPage
     {
 #line hidden
 

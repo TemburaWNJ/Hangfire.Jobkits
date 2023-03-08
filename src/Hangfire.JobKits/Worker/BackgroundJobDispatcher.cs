@@ -39,7 +39,7 @@ namespace Hangfire.JobKits.Worker
 
                 if (standbyJob.UseQueue)
                 {
-                    var queueString = (await context.Request.GetFormValuesAsync("equeued_state")).LastOrDefault();
+                    var queueString = (await context.Request.GetFormValuesAsync("enqueued_state")).LastOrDefault();
                     queuedState.Queue = queueString;
                 }
                 

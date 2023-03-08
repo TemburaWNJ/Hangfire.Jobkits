@@ -58,7 +58,7 @@ namespace Hangfire.JobKits.Dashboard
     #line hidden
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
-    internal partial class StandbyPage : Hangfire.Dashboard.RazorPage
+    public partial class StandbyPage : Hangfire.Dashboard.RazorPage
     {
 #line hidden
 
@@ -445,7 +445,7 @@ WriteLiteral("</button>\r\n");
 WriteLiteral(@"                                <div class=""queue-input"">
                                     <div class="" input-group"">
                                         <div class=""input-group-addon"">Queue</div>
-                                        <input type=""text"" name=""equeued_state"" class=""form-control"" />
+                                        <input type=""text"" name=""enqueued_state"" class=""form-control"" />
                                     </div>
                                 </div>
 ");
