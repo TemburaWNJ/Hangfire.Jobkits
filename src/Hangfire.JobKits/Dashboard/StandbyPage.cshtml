@@ -88,6 +88,12 @@
                             }
                             @if (!string.IsNullOrEmpty(job.RecurringJobId))
                             {
+                                <div class="queue-input" style="width:40%;">
+                                    <div class=" input-group">
+                                        <div class="input-group-addon">Job Recurring Id</div>
+                                        <input type="text" name="job_reccuring_id" class="form-control" placeholder="@job.RecurringJobId" />
+                                    </div>
+                                </div>
                                 <span class="cron-input">
                                     <input type="text" name="recurring_cron" class="form-control" placeholder="Cron" value="@job.RecurringJobCron">
                                     <button class="btn btn-success" type="button" onclick="onRecurring(this, '@job.Id');return false;">@(Strings.Button_Recurring)</button>

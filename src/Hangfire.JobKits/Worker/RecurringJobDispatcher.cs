@@ -37,6 +37,7 @@ namespace Hangfire.JobKits.Worker
 
                 var cron = (await context.Request.GetFormValuesAsync("recurring_cron")).LastOrDefault();
                 var timeZone = Options.RecurringTimeZone ?? TimeZoneInfo.Local;
+                var jobReccuringId = (await context.Request.GetFormValuesAsync("job_reccuring_id")).LastOrDefault();
 
                 var parameters = await StandbyHelper.CreateParameters(context, standbyJob.Method);
                 var queueString = string.Empty;
@@ -46,14 +47,16 @@ namespace Hangfire.JobKits.Worker
                     queueString = (await context.Request.GetFormValuesAsync("enqueued_state")).LastOrDefault();
                 }
 
+                string jobId = string.IsNullOrEmpty(jobReccuringId) ? standbyJob.RecurringJobId : jobReccuringId;
+
                 if (!string.IsNullOrEmpty(queueString))
                 {
                     context.GetRecurringJobManager()
-                        .AddOrUpdate(standbyJob.RecurringJobId, new Job(standbyJob.Method, parameters), cron, timeZone, queueString);
+                        .AddOrUpdate(jobId, new Job(standbyJob.Method, parameters), cron, timeZone, queueString);
                 }
                 else
                 {
-                    context.GetRecurringJobManager().AddOrUpdate(standbyJob.RecurringJobId, new Job(standbyJob.Method, parameters), cron, timeZone);
+                    context.GetRecurringJobManager().AddOrUpdate(jobId, new Job(standbyJob.Method, parameters), cron, timeZone);
                 }
 
                 context.Response.StatusCode = 200;
